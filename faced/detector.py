@@ -166,7 +166,12 @@ class FaceCorrector(object):
 
     def predict(self, frame):
         # Preprocess
-        input_img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
+        # orignally, the line was there...
+        #input_img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        # ...however, it looks like a mistake since the input should already be RGB!
+        input_img = frame
+        
         input_img = cv2.resize(input_img, (CORRECTOR_SIZE, CORRECTOR_SIZE)) / 255.
         input_img = np.reshape(input_img, [1, CORRECTOR_SIZE, CORRECTOR_SIZE, 3])
 
